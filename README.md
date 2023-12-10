@@ -13,17 +13,17 @@ Der Wired M-BUS Adapter kann über den RAK WisBlock Core ein- und ausgeschaltet 
 
 
 
-    void mbusAdapterOff()
-    {
-	    pinMode(WB_IO2, OUTPUT);
-	    digitalWrite(WB_IO2, LOW);
-    }
+	void mbusAdapterOff()
+	{
+		pinMode(WB_IO2, OUTPUT);
+		digitalWrite(WB_IO2, LOW);
+	}
 
-    void mbusAdapterOn()
-    {
-	    pinMode(WB_IO2, OUTPUT);
-	    digitalWrite(WB_IO2, HIGH);
-    }
+	void mbusAdapterOn()
+	{
+		pinMode(WB_IO2, OUTPUT);
+		digitalWrite(WB_IO2, HIGH);
+	}
 
 
 Dies kann nützlich sein, um in Auslesepausen Strom zu sparen oder um den Wired M-BUS Adapter zurückzusetzen.
@@ -33,9 +33,9 @@ Der Wired M-BUS Adapter kann direkt über die serielle Schnittstelle der MCU aus
 
     Serial1.begin(2400, SERIAL_8E1);
 
-    while(true)
-    {
-        if(Serial1.available() > 0)
+	while(true)
+	{
+		if(Serial1.available() > 0)
 		{
 			int number = Serial1.read();
 
@@ -46,13 +46,13 @@ Der Wired M-BUS Adapter kann direkt über die serielle Schnittstelle der MCU aus
 				digitalWrite(LED_BUILTIN, newState);
 			}
 		}
-        else
+		else
 		{
 			digitalWrite(LED_BUILTIN, LOW);
 
 			delay(100);
 		}
-    }
+	}
 
 
 Die Parameter für die serielle Schnittstelle hängen vom Smart Meter ab. Weiterer Code zur Verarbeitung eines CII Push Smart Meters wird in Kürze im Rahmen des Smartspar-Projekts folgen.
