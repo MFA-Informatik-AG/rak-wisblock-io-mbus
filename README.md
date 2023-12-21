@@ -3,14 +3,13 @@ RAK WisBlock IO wired M-Bus adapter
 
 ![M-Bus IO Adapter](/docs/MBUSAdapterv30pcb.png)
 
-Das Repository enthält den Schaltplan und das PCB-Layout für einen Wired M-BUS Slave Adapter, der als IO-Modul an einen RAK WisBlock Core angeschlossen werden kann.
+The repository contains the schematic and PCB layout for a Wired M-BUS Slave Adapter that can be connected to a RAK WisBlock Core as an IO module.
 
-Das Modul verwendet den **TI TSS721A Single-chip Meter-bus Transceiver** mit Referenzschaltung auf einem RAK IO-Modul. Der TSS721A wird in der Schaltung vom Wired M-BUS Master versorgt, was den Stromverbrauch über den RAK WisBlock Core auf ein Minimum reduziert (daher habe ich auch auf eine Status-LED verzichtet).
+The module uses the **TI TSS721A single-chip meter-bus transceiver** with reference circuitry on a RAK IO module. The TSS721A is powered by the Wired M-BUS Master in the circuit, which reduces the power consumption via the RAK WisBlock Core to a minimum (which is why I have also dispensed with a status LED).
 
-Der Wired M-BUS Adapter wurde nur für den Datenempfang mit dem L&G E450 Smart Meter getestet, sollte aber auch für den Empfang und Versand mit anderen Wired M-BUS Mastern verwendbar sein.
+The Wired M-BUS Adapter was only tested for receiving data with the L&G E450 Smart Meter, but should also be usable for receiving and sending data with other Wired M-BUS Masters.
 
-Der Wired M-BUS Adapter kann über den RAK WisBlock Core ein- und ausgeschaltet werden, indem der PIN WB_IO2 auf LOW oder HIGH gesetzt wird:
-
+The Wired M-BUS Adapter can be switched on and off via the RAK WisBlock Core by setting the PIN WB_IO2 to LOW or HIGH:
 
 
 	void mbusAdapterOff()
@@ -26,9 +25,9 @@ Der Wired M-BUS Adapter kann über den RAK WisBlock Core ein- und ausgeschaltet 
 	}
 
 
-Dies kann nützlich sein, um in Auslesepausen Strom zu sparen oder um den Wired M-BUS Adapter zurückzusetzen.
+This can be useful to save power during readout pauses or to reset the Wired M-BUS Adapter.
 
-Der Wired M-BUS Adapter kann direkt über die serielle Schnittstelle der MCU ausgelesen werden, z.B. mit dem RAK Wisblock 4631 und dem L&G E450 (Beispiel):
+The Wired M-BUS Adapter can be read out directly via the serial interface of the MCU, e.g. with the RAK Wisblock 4631 and the L&G E450 (example):
 
 
     Serial1.begin(2400, SERIAL_8E1);
@@ -55,6 +54,6 @@ Der Wired M-BUS Adapter kann direkt über die serielle Schnittstelle der MCU aus
 	}
 
 
-Die Parameter für die serielle Schnittstelle hängen vom Smart Meter ab. Weiterer Code zur Verarbeitung eines CII Push Smart Meters wird in Kürze im Rahmen des Smartspar-Projekts folgen.
+The parameters for the serial interface depend on the smart meter. Further code for processing a CII Push Smart Meter will follow shortly as part of the Smartspar project.
 
 
